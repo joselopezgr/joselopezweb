@@ -1,0 +1,263 @@
+/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Cabin:wght@600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'hiragino';
+    src: url('/fonts/HiraginoSansGB-W6.ttf') format('truetype');
+}
+
+
+/* ============= HERO SECTION =============== */
+
+
+
+.my-name {
+    font-size: 4rem; /* default size */
+    line-height: 1; 
+    font-weight: 800;
+    color: #363636;
+    font-family: 'hiragino', sans-serif;
+    width: 100%; /* occupy 60% of the component */
+    text-align: left; /* position the name on the left */
+    overflow: hidden;
+    margin-top: 12rem; /* add margin on top */
+    margin-bottom: 10rem; /* add margin on bottom */
+    padding-top: 1rem; /* add padding on top */
+    padding-bottom: 1rem; /* add padding on bottom */
+}
+
+.char {
+    display: inline-block;
+    animation: slide-up 1s ease-in-out forwards;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* When the screen size is 768px or more, decrease the font size */
+@media screen and (min-width: 768px) {
+    .my-name {
+        font-size: 6rem;
+    }
+}
+
+/* When the screen size is 1024px or more, decrease the font size even more */
+@media screen and (min-width: 1024px) {
+    .my-name {
+        font-size: 10rem;
+    }
+}
+
+/* When the screen size is 1200px or more, decrease the font size even more */
+@media screen and (min-width: 1200px) {
+    .my-name {
+        font-size: 12rem;
+    }
+}
+
+/* ============= ROOT AND MAIN PART =============== */
+
+
+/* styles.css */
+.root-body { 
+    background-image: linear-gradient(180deg, #f8ebe3 3%, #f9dcca 90%);
+    border: 1px solid #FFFFFF;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+main { 
+    background-image: linear-gradient(180deg, #f8ebe3 50%, #f9dcca 90%);
+    position: relative;
+    min-height: 100vh; /* Ensure it takes at least full viewport height */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* take up the full height of its parent */
+}
+
+.my-name-wrapper {
+    flex: 4; /* take up 4/5 of the available space */
+}
+
+
+
+/* ==================== ABOUT SECTION =========================== */
+
+.titleStyle {
+    font-size: 4rem;
+    line-height: 1; 
+    font-weight: 400;
+    color: #363636;
+    font-family: 'hiragino', sans-serif;
+    width: 100%; 
+    overflow: hidden;
+    margin-top: 15rem; 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* When the screen size is less than 768px, set the font size to 4rem */
+@media screen and (max-width: 767px) {
+    .titleStyle {
+        font-size: 3rem;
+    }
+}
+
+/* When the screen size is 768px or more, decrease the font size */
+@media screen and (min-width: 768px) {
+    .titleStyle {
+        font-size: 4rem;
+    }
+}
+
+/* When the screen size is 1024px or more, decrease the font size even more */
+@media screen and (min-width: 1024px) {
+    .titleStyle {
+        font-size: 5rem;
+    }
+}
+
+/* When the screen size is 1200px or more, decrease the font size even more */
+@media screen and (min-width: 1200px) {
+    .titleStyle {
+        font-size: 7rem;
+    }
+}
+
+
+
+
+.about-container { 
+        /* background-color: rgba(98, 131, 149, 0.28); */
+        border-radius: 15px;
+        border: 2px solid #38302e;
+        color: #363636 ;
+}
+
+#extra-text{
+    color: #38302e;
+    font-family: 'syne', sans-serif;
+    padding-top: 10px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.tech-buttons {
+    background-color: #f7fafc; /* bg-gray-200 */
+    transition-duration: 0.3s; /* ease-in */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    margin-right: 0.5rem; /* mr-2 */
+    margin-top: 0.5rem; /* mt-2 */
+    color: #38302e; /* text-gray-500 */
+    border-radius: 0.375rem; /* rounded */
+    font-weight: 600; /* font-semibold */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+}
+
+/*When I hover over the tech-buttons I want them to shrink and go this color #759aab */
+.tech-buttons:hover {
+    transform: scale(0.95); /* hover:scale-95 */
+    background-color: #758e4f; /* hover:bg-gray-300 */
+    color: #2d3748; /* hover:text-gray-700 */
+}
+
+
+
+/* ==================== PROJECTS SECTION =========================== */
+
+
+#projects h1 {
+    color: #363636;
+    font-family: "Courier New", monospace;
+}
+
+.project-container  {
+    /* background-color: rgba(98, 131, 149, 0.28); */
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    border: 2px solid #38302e;
+    border-radius: 15px;
+    color: #363636 ;
+}
+
+
+
+/* ==================== CONTACT SECTION =========================== */
+
+
+#contact h1 {
+    color: #363636;
+    font-family: "Courier New", monospace;
+}
+
+.contact-container {
+    /* background-color: rgba(98, 131, 149, 0.28); */
+    border: 2px solid #38302e;
+    border-radius: 15px;
+    color: #363636 ;
+    font-family: 'syne', sans-serif;
+}
+
+ input {
+    background-color: #f7fafc;
+}
+
+textarea {
+    background-color: #f7fafc;
+}
+
+.contact-button:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.contact-button {
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #759aab;
+    color: #363636;
+    outline: none;
+}
+
+
+/* ==================== FOOTER SECTION =========================== */
+
+
+footer {
+    color: #363636;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: 'hiragino', sans-serif;
+    border-top: 3px solid #363636; /* Add border style and width */
+}
+
