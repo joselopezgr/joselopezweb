@@ -1,9 +1,8 @@
 "use client";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { FC, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "@nextui-org/react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import axios from "axios";
-import GoogleCaptchaWrapper from "./googleCaptchaWrapper";
 
 export type FormData = {
   name: string;
@@ -11,72 +10,53 @@ export type FormData = {
   message: string;
 };
 
-const WrappedContactSection: FC = () => {
-  return(
-  <GoogleCaptchaWrapper>
-    <ContactSection />
-  </GoogleCaptchaWrapper>
-)}
-
-const ContactSection: FC = () => {
-  // const { register, handleSubmit } = useForm<FormData>();
-
-  // function onSubmit(data: FormData) {
-  //   sendEmail(data);
-  // }
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [notification, setNotification] = useState('');
-
+const ContactSection = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submit, setSubmit] = useState("");
 
-  const handleSubmitForm = function (e: any) {
+ const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not available yet");
-      setNotification(
-        "Execute recaptcha not available yet likely meaning key not set"
-      );
       return;
     }
-    executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-      submitEnquiryForm(gReCaptchaToken);
-    });
-  };
 
-  const submitEnquiryForm = (gReCaptchaToken : string) => {
-    async function goAsync() {
-      const response = await axios({
-        method: "post",
-        url: "/api/email",
-        data: {
-          firstName: name,
-          email: email,
-          message: message,
-          gRecaptchaToken: gReCaptchaToken,
-        },
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
+    const gRecaptchaToken = await executeRecaptcha("contact");
+
+    const data: FormData = {
+      name,
+      email,
+      message,
+    };
+
+    try {
+      const response = await axios.post("/api/email", {
+        ...data,
+        gRecaptchaToken,
       });
 
-      if (response?.data?.success === true) {
-        setNotification(`Success with score: ${response?.data?.score}`);
-      } else {
-        setNotification(`Failure with score: ${response?.data?.score}`);
+      if (response.data.success) {
+        setSubmit(response.data.message);
+        setName(name);
+        setEmail(email);
+        setMessage(message);
+        setName("");
+        setEmail("");
+        setMessage("");
       }
+    } catch (error) {
+      setSubmit("An error occurred. Please try again later.");
     }
-    goAsync().then(() => {}); // suppress typescript error
-  };
+  }
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6">
       <div className="my-12 pb-16 md:my-16 md:pb-20 lg:my-20 lg:pb-24 xl:my-24 xl:pb-28">
         <div className="contact-container flex flex-col space-y-10 mt-12 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
-          <form onSubmit={handleSubmitForm} className="max-w-md w-full">
+          <form onSubmit={handleSubmit} className="max-w-md w-full">
             <div className="mb-5">
               <label
                 htmlFor="name"
@@ -86,9 +66,8 @@ const ContactSection: FC = () => {
               </label>
               <input
                 type="text"
-                name="name"
                 value={name}
-                onChange={(e) => setName(e?.target?.value)}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="John Doe"
                 className="w-full rounded-md border border-gray-300 opacity-80 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
               />
@@ -102,9 +81,8 @@ const ContactSection: FC = () => {
               </label>
               <input
                 type="email"
-                name="email"
                 value={email}
-                onChange={(e) => setEmail(e?.target?.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="example@domain.com"
                 className="w-full rounded-md border border-gray-300 py-3 opacity-80 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
               />
@@ -118,20 +96,29 @@ const ContactSection: FC = () => {
               </label>
               <textarea
                 rows={4}
-                name="message"
                 value={message}
-                onChange={(e) => setMessage(e?.target?.value)}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type your message"
                 className="w-full resize-none rounded-md border border-gray-300 opacity-80 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
               ></textarea>
             </div>
-              <Button color="warning" type="submit">Submit</Button>
-              {notification && <p className="mt-3 text-info">{notification}</p>}
+            <Button color="warning" type="submit">
+              Submit
+            </Button>
           </form>
+          {submit && (
+            <p
+              className={`text-lg text-center ${
+                submit.includes("error") ? "text-red-500" : "text-green-500"
+              }`}
+            >
+              {submit}
+            </p>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default WrappedContactSection;
+export default ContactSection;

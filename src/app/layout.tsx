@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SplashScreen } from "../components/SplashScreen";
 import { NextUIProvider } from "@nextui-org/react";
+import GoogleCaptchaWrapper from "@/components/googleCaptchaWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,11 +50,9 @@ export default function RootLayout({
               transition={{ duration: 0.5 }}
               className="relative h-screen overflow-visible"
             >
-              <NextUIProvider>
-                <ThemeProvider enableSystem={true} attribute="class">
-                  {children}
-                </ThemeProvider>
-              </NextUIProvider>
+              <GoogleCaptchaWrapper>
+                <NextUIProvider>{children}</NextUIProvider>
+              </GoogleCaptchaWrapper>
             </motion.div>
           )}
         </AnimatePresence>
