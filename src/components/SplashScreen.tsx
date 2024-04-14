@@ -1,7 +1,7 @@
 // SplashScreen.tsx
 import React, { useEffect, useState } from "react";
 import anime from "animejs";
-import { useAnimation } from "framer-motion";
+
 
 interface SplashScreenProps {
   finishedLoading: () => void;
