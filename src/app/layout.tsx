@@ -1,13 +1,13 @@
 "use client";
 import "./globals.css";
-import Footer from "@/components/footer";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SplashScreen } from "../components/SplashScreen";
 import { NextUIProvider } from "@nextui-org/react";
+import GoogleCaptchaWrapper from "@/components/googleCaptchaWrapper";
+import WavesSVG from "@/components/wavesSVG";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +38,7 @@ export default function RootLayout({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <SplashScreen finishedLoading={() => setIsLoading(false)} />
+          <SplashScreen finishedLoading={() => setIsLoading(false)} />
             </motion.div>
           ) : (
             <motion.div
@@ -49,11 +49,9 @@ export default function RootLayout({
               transition={{ duration: 0.5 }}
               className="relative h-screen overflow-visible"
             >
-              <NextUIProvider>
-                <ThemeProvider enableSystem={true} attribute="class">
-                  {children}
-                </ThemeProvider>
-              </NextUIProvider>
+              <GoogleCaptchaWrapper>
+                <NextUIProvider>{children}</NextUIProvider>
+              </GoogleCaptchaWrapper>
             </motion.div>
           )}
         </AnimatePresence>

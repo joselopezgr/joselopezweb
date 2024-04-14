@@ -1,76 +1,73 @@
-import { NextResponse } from "next/server";
-import nodemailer from 'nodemailer';
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 import axios from "axios";
 
-export async function POST(request: Request, response: Response) {
+interface PostData {
+  gRecaptchaToken: string;
+  name: string;
+  email: string;
+  message: string;
+}
 
-    const { email, name, message, gRecaptchaToken } = await request.json();
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+const verifyReCaptcha = async (gRecaptchaToken: string) => {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  var url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${gRecaptchaToken}`;
+console.log("secretKey:", secretKey)
+  return await axios.post(url);
+};
 
-    console.log(
-        "gRecaptchaToken,firstName,lastName,email,hearFromSponsors:",
-        gRecaptchaToken?.slice(0, 10) + "...",
-        name,
-        email,
-        message
-      );
+export async function POST(req: Request, res: Response) {
+  try {
+  const postData = await req.json();
+  const { gRecaptchaToken, name, email, message } = postData as PostData;
 
     const transport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.MY_EMAIL,
-            pass: process.env.MY_PASSWORD
-        }
+      service: "gmail",
+      auth: {
+        user: process.env.MY_EMAIL,
+        pass: process.env.MY_PASSWORD,
+      },
     });
 
     const mailOptions: Mail.Options = {
-        from: process.env.MY_EMAIL,
-        to: process.env.MY_EMAIL,
-        subject: `Message from ${name} (${email})`,
-        text: message,
+      from: process.env.MY_EMAIL,
+      to: process.env.MY_EMAIL,
+      subject: `Message from ${name} (${email})`,
+      text: message,
     };
 
-    let res: any;
-    const formData = `secret=${secretKey}&response=${gRecaptchaToken}`;
-
-    try {
-      res = await axios.post(
-        "https://www.google.com/recaptcha/api/siteverify",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      );
-    } catch (e) {
-      console.log("recaptcha error:", e);
-    }
-
-    const sendMailPromise = () => 
-        new Promise<string>((resolve, reject) => {
-            transport.sendMail(mailOptions, function (err) {
-                if(!err) {
-                    resolve('Email sent');
-                } else {
-                    reject(err.message)
-                }
-            })
+    const sendMailPromise = () =>
+      new Promise<string>((resolve, reject) => {
+        transport.sendMail(mailOptions, function (err) {
+          if (!err) {
+            resolve("Email sent");
+          } else {
+            reject(err.message);
+          }
         });
+      });
 
-    if (res && res.data?.success && res.data?.score > 0.5) {
-        // Save data to the database from here
-        console.log("res.data?.score:", res.data?.score);
-    
-        try {
-        await sendMailPromise();
-        return NextResponse.json({ success: true, name, score: res.data?.score, message: 'Email sent' })
-        } catch (error) {
-            return NextResponse.json({success: false, name, score: res.data?.score, error }, { status: 500})
-        }
-      } else {
-        console.log("fail: res.data?.score:", res.data?.score);
-        return NextResponse.json({ success: false, name, score: res.data?.score });
-      }
+    const response = await verifyReCaptcha(gRecaptchaToken);
+
+    if (response && response.data.success && response.data.score > 0.5) {
+      // Save data to the database from here
+      console.log("res.data?.score:", response.data?.score);
+
+      await sendMailPromise();
+      return NextResponse.json({
+        success: true,
+        name,
+        score: response.data?.score,
+        message: "Email sent",
+      });
+    } else {
+      console.log("fail: response.data?.score:", response.data?.score);
+
+      return NextResponse.json({ success: false, score: response.data?.score });
+    }
+  } catch (error) {
+    console.log("error:", error);
+    return NextResponse.json({ success: false, error });
+  }
 }

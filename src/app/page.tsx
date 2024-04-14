@@ -10,11 +10,12 @@ import AboutTitle from "@/components/aboutTitle";
 import ProjectTitle from "@/components/projectTitle";
 import ContactTitle from "@/components/contactTitle";
 import LetsConnect from "@/components/letsConnect";
-import SvgComponent from "@/components/svgComponent";
+import WavesSVG from "@/components/wavesSVG";
 
 const Index = () => {
   return (
     <main className="mx-auto max-w-12xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <WavesSVG/>
       {/* <SvgComponent/> */}
       <HeroSection />
       <div
