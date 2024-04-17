@@ -77,14 +77,14 @@
 
 /* styles.css */
 .root-body { 
-    background: linear-gradient(180deg, #f8ebe3 3%, #f9dcca 90%), url('/waves.svg') no-repeat center center fixed;
+    background: linear-gradient(180deg, #f8ebe3 3%, #f9dcca 90%);
     border: 1px solid #FFFFFF;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
 main { 
-    background-image: linear-gradient(180deg, #f8ebe3 50%, #f9dcca 90%);
+    background-image: linear-gradient(180deg, #f8ebe3 10%, #f9dcca 50%);
     position: relative;
     min-height: 100vh; /* Ensure it takes at least full viewport height */
 }
@@ -111,7 +111,7 @@ main {
     font-family: 'hiragino', sans-serif;
     width: 100%; 
     overflow: hidden;
-    margin-top: 12rem; 
+    margin-top: 8rem; 
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
@@ -198,8 +198,8 @@ main {
 
 .project-container  {
     /* background-color: rgba(98, 131, 149, 0.28); */
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     border: 2px solid #38302e;
     border-radius: 15px;
     color: #363636 ;

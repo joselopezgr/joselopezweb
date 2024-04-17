@@ -14,7 +14,7 @@ import WavesSVG from "@/components/wavesSVG";
 
 const Index = () => {
   return (
-    <main className="mx-auto max-w-12xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+    <main className="mx-auto max-w-12xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 overflow-x-hidden">
       <WavesSVG/>
       {/* <SvgComponent/> */}
       <HeroSection />
