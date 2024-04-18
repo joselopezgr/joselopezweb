@@ -56,7 +56,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6">
-      <div className="my-12 pb-16 md:my-16 md:pb-20 lg:my-20 lg:pb-24 xl:my-24 xl:pb-28">
+      <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="contact-container flex flex-col space-y-10 mt-12 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <form onSubmit={handleSubmit} className="max-w-md w-full">
             <div className="mb-5">

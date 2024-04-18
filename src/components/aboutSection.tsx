@@ -82,7 +82,7 @@ const technologies = [
 const AboutSection = () => {
   return (
     <section id="about" className="mx-auto max-w-6xl px-6">
-      <div className="my-12 pb-16 md:my-16 md:pb-20 lg:my-20 lg:pb-24 xl:my-24 xl:pb-28">
+      <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="about-container flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <div className="md:w-1/2 p-8">
             <h2 className="font-bold text-2xl">
