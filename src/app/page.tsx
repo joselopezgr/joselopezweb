@@ -4,13 +4,13 @@ import AboutSection from "@/components/aboutSection";
 import ProjectSection from "@/components/projectSection";
 import ContactSection from "@/components/contactSection";
 import { HiArrowDown } from "react-icons/hi";
-import Footer from "@/components/footer";
+import Footer from "@/components/others/footer";
 import { Slide } from "react-awesome-reveal";
 import AboutTitle from "@/components/aboutTitle";
 import ProjectTitle from "@/components/projectTitle";
 import ContactTitle from "@/components/contactTitle";
-import LetsConnect from "@/components/letsConnect";
-import WavesSVG from "@/components/wavesSVG";
+import LetsConnect from "@/components/others/letsConnect";
+import WavesSVG from "@/components/others/wavesSVG";
 
 const Index = () => {
   return (

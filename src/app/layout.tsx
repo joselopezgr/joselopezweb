@@ -2,12 +2,11 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SplashScreen } from "../components/SplashScreen";
+import { SplashScreen } from "../components/others/SplashScreen";
 import { NextUIProvider } from "@nextui-org/react";
-import GoogleCaptchaWrapper from "@/components/googleCaptchaWrapper";
-import WavesSVG from "@/components/wavesSVG";
+import GoogleCaptchaWrapper from "@/components/googleCaptcha/googleCaptchaWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +18,18 @@ export default function RootLayout({
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showSplashScreen, setShowSplashScreen] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
   }, [isLoading]);
+
+  useEffect(() => {
+    if (!localStorage.getItem('splashScreenShown')) {
+      setShowSplashScreen(true);
+      localStorage.setItem('splashScreenShown', 'true');
+    }
+  }, []);
 
   return (
     <html lang="en">
@@ -38,7 +45,7 @@ export default function RootLayout({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-          <SplashScreen finishedLoading={() => setIsLoading(false)} />
+            <SplashScreen finishedLoading={() => setIsLoading(false)} />
             </motion.div>
           ) : (
             <motion.div

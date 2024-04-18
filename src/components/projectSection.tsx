@@ -44,7 +44,7 @@ const ProjectSection = () => {
             </Card>
           </div>
           <div className="card2 m-4">
-            <Card className="py-4 bg-background/60 dark:bg-default-100/25 hover:bg-default-100/55" isBlurred isPressable isHoverable onPress={() => window.open("https://github.com/joselopezgr/my_website")}>
+            <Card className="py-4 bg-background/60 dark:bg-default-100/25 hover:bg-default-100/55" isBlurred isPressable isHoverable onPress={() => window.open("https://github.com/joselopezgr/joselopezweb")}>
               <Fade direction="right" triggerOnce>
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                   <p style={{color: "#363636", fontStyle: "italic"}}>Work in progress</p>
