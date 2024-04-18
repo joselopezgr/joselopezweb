@@ -121,6 +121,9 @@ main {
     .titleStyle {
         font-size: 3rem;
     }
+    .contact-container {
+        padding: 12px;
+    }
 }
 
 /* When the screen size is 768px or more, decrease the font size */
@@ -216,7 +219,6 @@ main {
 }
 
 .contact-container {
-    /* background-color: rgba(98, 131, 149, 0.28); */
     border: 2px solid #38302e;
     border-radius: 15px;
     color: #363636 ;
@@ -229,24 +231,6 @@ main {
 
 textarea {
     background-color: #f7fafc;
-}
-
-.contact-button:hover {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.contact-button {
-    margin-bottom: 1rem;
-    border-radius: 0.375rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #759aab;
-    color: #363636;
-    outline: none;
 }
 
 

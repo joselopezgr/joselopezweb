@@ -44,14 +44,14 @@ const ProjectSection = () => {
             </Card>
           </div>
           <div className="card2 m-4">
-            <Card className="py-4 bg-background/60 dark:bg-default-100/25 hover:bg-default-100/55" isBlurred isPressable isHoverable onPress={() => alert("Project not available to view yet. Coming soon.")}>
+            <Card className="py-4 bg-background/60 dark:bg-default-100/25 hover:bg-default-100/55" isBlurred isPressable isHoverable onPress={() => window.open("https://github.com/joselopezgr/my_website")}>
               <Fade direction="right" triggerOnce>
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                   <p style={{color: "#363636", fontStyle: "italic"}}>Work in progress</p>
                   <small className="" style={{ color: "#8b473a"}}>
                     Next.js, React, Tailwind, TypeScript, and more. 
                   </small>
-                  <h2 className="font-bold text-large">Personal Portfolio Website</h2>
+                  <h2 className="font-bold text-large">Portfolio Web</h2>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2">
                   {" "}
