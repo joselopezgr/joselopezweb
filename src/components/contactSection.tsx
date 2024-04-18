@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import axios from "axios";
+import InputFields from "./inputFields";
 
 export type FormData = {
   name: string;
@@ -12,12 +13,13 @@ export type FormData = {
 
 const ContactSection = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submit, setSubmit] = useState("");
 
- const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!executeRecaptcha) {
@@ -50,7 +52,7 @@ const ContactSection = () => {
     } catch (error) {
       setSubmit("An error occurred. Please try again later.");
     }
-  }
+  };
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6">
@@ -58,49 +60,31 @@ const ContactSection = () => {
         <div className="contact-container flex flex-col space-y-10 mt-12 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <form onSubmit={handleSubmit} className="max-w-md w-full">
             <div className="mb-5">
-              <label
-                htmlFor="name"
-                className="mb-3 block text-base font-medium text-neutral"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="John Doe"
-                className="w-full rounded-md border border-gray-300 opacity-80 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
-              />
+                <InputFields
+                  type="text"
+                  labelText="Full Name"
+                  inputName="name"
+                  onChange={(e) => {setName(e.target.value);}}
+                  textarea={false}
+                />
             </div>
             <div className="mb-5">
-              <label
-                htmlFor="email"
-                className="mb-3 block text-base font-medium text-neutral"
-              >
-                Email Address
-              </label>
-              <input
+              <InputFields
                 type="email"
-                value={email}
+                labelText="Email"
+                inputName="email"
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="example@domain.com"
-                className="w-full rounded-md border border-gray-300 py-3 opacity-80 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
+                textarea={false}
               />
             </div>
             <div className="mb-5">
-              <label
-                htmlFor="message"
-                className="mb-3 block text-base font-medium text-neutral"
-              >
-                Message
-              </label>
-              <textarea
-                rows={4}
-                value={message}
+              <InputFields
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type your message"
-                className="w-full resize-none rounded-md border border-gray-300 opacity-80 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md"
-              ></textarea>
+                labelText="Message"
+                inputName="message"
+                type="text"
+                textarea
+              />
             </div>
             <Button color="warning" type="submit">
               Submit
