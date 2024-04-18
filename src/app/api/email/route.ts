@@ -13,7 +13,6 @@ interface PostData {
 const verifyReCaptcha = async (gRecaptchaToken: string) => {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   var url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${gRecaptchaToken}`;
-console.log("secretKey:", secretKey)
   return await axios.post(url);
 };
 
@@ -51,9 +50,6 @@ export async function POST(req: Request, res: Response) {
     const response = await verifyReCaptcha(gRecaptchaToken);
 
     if (response && response.data.success && response.data.score > 0.5) {
-      // Save data to the database from here
-      console.log("res.data?.score:", response.data?.score);
-
       await sendMailPromise();
       return NextResponse.json({
         success: true,
@@ -62,12 +58,9 @@ export async function POST(req: Request, res: Response) {
         message: "Email sent",
       });
     } else {
-      console.log("fail: response.data?.score:", response.data?.score);
-
       return NextResponse.json({ success: false, score: response.data?.score });
     }
   } catch (error) {
-    console.log("error:", error);
     return NextResponse.json({ success: false, error });
   }
 }
