@@ -19,8 +19,8 @@ const ProjectSection = () => {
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6">
-      <div className="my-12 pb-16 md:my-16 md:pb-20 lg:my-20 lg:pb-24 xl:my-24 xl:pb-28">
-        <div className="project-container flex justify-center items-center h-full mt-6 pt-8 pb-8">
+      <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
+        <div className="project-container flex justify-center items-center h-full pt-8 pb-8">
           <div className="card1 m-4">
             <Card className="py-4 bg-background/60 dark:bg-default-100/25 hover:bg-default-100/55" isBlurred isPressable isHoverable onPress={() => window.open("https://github.com/joselopezgr/service-submatch-user", "_blank")}>
               <Fade direction="left" triggerOnce>
