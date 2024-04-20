@@ -86,39 +86,44 @@ const AboutSection = () => {
         <div className="about-container flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <div className="md:w-1/2 p-8">
             <h2 className="font-bold text-2xl">
-              Hi there! It`s <span style={{ color: "#758e4f" }}>{"Jose"}</span>{" "}
+              Hi there! It`s <span style={{ color: "#628395" }}>{"Jose"}</span>{" "}
               here
             </h2>
             <br />
             <p>
               I am a{" "}
-              <span className="font-bold" style={{ color: "#758e4f" }}>
+              <span className="font-bold" style={{ color: "#628395" }}>
                 {"Software Engineer"}
               </span>{" "}
-              based in{" "}
-              <span className="font-bold" style={{ color: "#758e4f" }}>
+              who calls the vibrant city of{" "}
+              <span className="font-bold" style={{ color: "#628395" }}>
                 {" Leeds, UK"}
               </span>{" "}
-              with a passion for building innovative solutions. After a career
-              change in 2022, I honed my skills at{" "}
-              <span className="font-bold" style={{ color: "#758e4f" }}>
-                Makers Academy
-              </span>{" "}
-              and have been delivering results in the tech industry ever since.
+              home.
+            </p>
+            <p>
+              My coding journey kicked off at a bootcamp, and boy, what a ride
+              it&apos;s been! From there, I landed an apprenticeship at an
+              EdTech company, where my knowledge expanded faster than
+              JavaScript&apos;s ecosystem.{" "}
             </p>
             <br />
             <p>
-              I bring a <span className="font-bold" style={{ color: "#758e4f" }}>growth mindset</span> and a <span className="font-bold" style={{ color: "#758e4f" }}>love of learning</span> to everything I
-              do. Whether it&apos;s tackling a coding challenge or exploring a
-              new city, I&apos;m always seeking ways to expand my knowledge.
+              Speaking of JavaScript, that&apos;s where I took my first coding
+              steps. But the bootcamp had me diving deep into the world of
+              vanilla Ruby, where I got my hands dirty with the fundamentals of
+              OOP. During my work placement, I got to tinker with TypeScript,
+              Microservices, and Next.js (which I used to build my website).
             </p>
             <br />
+            <p>But wait, there&apos;s more!</p>
             <p>
-              I&apos;m eager to leverage my skills and enthusiasm on impactful
-              projects. <span className="font-bold" style={{ color: "#d66853", cursor: "pointer" }} onClick={() => window.location.href = "#contact"}>Let&apos;s connect</span> and see how I can contribute to your
-              team&apos;s success!
+              <span className="font-bold">
+                <a href="https://github.com/joselopezgr/joselopezweb" target="_blank" className="hover:text-sky-600">
+                  [Checkout the Readme to continue reading about me]
+                </a>
+              </span>
             </p>
-            <br />
           </div>
 
           <div className="text-center md:w-1/2 md:text-left p-8">
@@ -137,13 +142,6 @@ const AboutSection = () => {
               })}
               <p id="extra-text">And much more to come </p>
             </div>
-            {/* <Image
-              src="/man-illustration.png"
-              alt="cartoon-char"
-              width={290}
-              height={320}
-              className="hidden md:block md:relative md:bottom-4 mt-4 md:left-32 md:z-0 bg-transparent"
-            /> */}
           </div>
         </div>
         <div className="flex flex-row items-center text-center justify-center mt-4 "></div>

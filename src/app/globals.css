@@ -151,10 +151,10 @@ main {
 
 
 .about-container { 
-        /* background-color: rgba(98, 131, 149, 0.28); */
         border-radius: 15px;
-        border: 2px solid #38302e;
+        border: 2px solid #628395;
         color: #363636 ;
+        background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
 }
 
 #extra-text{
@@ -185,7 +185,7 @@ main {
 /*When I hover over the tech-buttons I want them to shrink and go this color #759aab */
 .tech-buttons:hover {
     transform: scale(0.95); /* hover:scale-95 */
-    background-color: #758e4f; /* hover:bg-gray-300 */
+    background-color: #628395; /* hover:bg-gray-300 */
     color: #2d3748; /* hover:text-gray-700 */
 }
 
@@ -200,12 +200,12 @@ main {
 }
 
 .project-container  {
-    /* background-color: rgba(98, 131, 149, 0.28); */
     padding-top: 3rem;
     padding-bottom: 3rem;
-    border: 2px solid #38302e;
+    border: 2px solid #628395;
     border-radius: 15px;
     color: #363636 ;
+    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
 }
 
 
@@ -219,10 +219,11 @@ main {
 }
 
 .contact-container {
-    border: 2px solid #38302e;
+    border: 2px solid #628395;
     border-radius: 15px;
     color: #363636 ;
     font-family: 'syne', sans-serif;
+    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
 }
 
  input {

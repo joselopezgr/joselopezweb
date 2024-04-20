@@ -19,7 +19,7 @@
 }
 
 .input-field input:focus {
-    border-color: #758e4f;
+    border-color: #d66853;
 }
 
 .input-field label {
@@ -28,18 +28,18 @@
     left: 0;
     padding: 0.5em 0px;
     transition: 0.3s;
-    color: #d66853;
+    color: #628395;
 }
 
 .input-field.focused label {
     transform: translateY(-20px);
     font-size: 12px;
-    color: #758e4f;
+    color: #d66853;
 }
 
-.input-field label.transparent {
+/* .input-field label.transparent {
     color: #d66853;
-  }
+  } */
 
 .input-field textarea {
     height: 100px;
@@ -54,5 +54,5 @@
 }
 
 .input-field textarea:focus {
-    border-color: purple;
+    border-color: #d66853;
 }
