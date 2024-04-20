@@ -1,13 +1,10 @@
-# My Portfolio Website
+# My Portfolio Website 💻
 Welcome to my portfolio website! This is where you can learn more about me and my work as a software developer. Feel free to explore the different sections and projects showcased here.
 
-## About Me
-<div style="text-align:center; border: 1px solid black; width: 200px; margin: auto;">
-  
-![My Picture](/my_web_nextjs/public/myPicture.jpg)
-
+## About Me 📖
+<div align="center">
+<img src="https://github.com/joselopezgr/joselopezweb/assets/113211465/20a6385d-f6a2-42b2-bc59-549bb0c31c77" width="200" className="item-center">
 </div>
-
 Hey there! I'm José, a Software Engineer who calls the vibrant city of Leeds, in England, home. My coding journey kicked off at a bootcamp, and boy, what a ride it's been! From there, I landed an apprenticeship at an EdTech company, where my knowledge expanded faster than JavaScript's ecosystem.
 
 Speaking of JavaScript, that's where I took my first coding steps. But the bootcamp had me diving deep into the world of vanilla Ruby, where I got my hands dirty with the fundamentals of OOP. During my work placement, I got to tinker with TypeScript, Microservices, and Next.js (which I used to build my website).
@@ -21,14 +18,14 @@ I've tangled with a variety of other tools too, like AWS services, SQL and NoSQL
 So, as you can see, I'm always up for learning new languages, frameworks, architectures, and designs. I'm all about expanding my horizons and pushing the boundaries of what I can create. Let's code something amazing together!
 
 
-## Technologies Used
+## Technologies Used 🔭
 - Next.js
 - React
 - TypeScript
 - CSS
 
 
-## Contact
+## Contact 📱
 
 If you have any questions or would like to get in touch, feel free to reach out to me at [joselopezgr@gmail.com](mailto:joselopezgr@gmail.com).
 
