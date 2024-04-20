@@ -117,10 +117,11 @@ const AboutSection = () => {
             </p>
             <br />
             <p>But wait, there&apos;s more!</p>
+            <br />
             <p>
               <span className="font-bold">
-                <a href="https://github.com/joselopezgr/joselopezweb" target="_blank" className="hover:text-sky-600">
-                  [Checkout the Readme to continue reading about me]
+                <a href="https://github.com/joselopezgr/joselopezweb/blob/main/README.md" target="_blank" className="hover:text-sky-600">
+                  [Checkout the Readme to continue reading]
                 </a>
               </span>
             </p>
@@ -140,7 +141,7 @@ const AboutSection = () => {
                   </Link>
                 );
               })}
-              <p id="extra-text">And much more to come </p>
+              <p id="extra-text">And much mor<span style={{ color: "#d66853" }}>e</span> to com<span style={{ color: "#d66853" }}>e</span> </p>
             </div>
           </div>
         </div>

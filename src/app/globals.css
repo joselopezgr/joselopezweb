@@ -161,7 +161,6 @@ main {
     color: #38302e;
     font-family: 'syne', sans-serif;
     padding-top: 10px;
-    font-weight: 600;
     font-style: italic;
 }
 
@@ -243,6 +242,6 @@ footer {
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-family: 'hiragino', sans-serif;
-    border-top: 3px solid #363636; /* Add border style and width */
+    border-top: 3px solid #628395; /* Add border style and width */
 }
 
