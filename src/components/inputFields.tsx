@@ -24,7 +24,7 @@ const InputFields: React.FC<Props> = ({
     <div className={`input-field ${isFocused ? "focused" : ""}`}>
       {textarea ? (
         <textarea
-          name={inputName}
+          value={inputName}
           onFocus={() => setIsFocused(true)}
           onBlur={(e) => {
             if (e.target.value === '') {
@@ -36,7 +36,7 @@ const InputFields: React.FC<Props> = ({
       ) : (
         <input
           type={type}
-          name={inputName}
+          value={inputName}
           onFocus={() => setIsFocused(true)}
           onBlur={(e) => {
             if (e.target.value === '') {

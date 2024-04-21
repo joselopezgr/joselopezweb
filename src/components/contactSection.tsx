@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import axios from "axios";
 import InputFields from "./inputFields";
+import { BeatLoader } from "react-spinners";
 
 export type FormData = {
   name: string;
@@ -13,6 +14,7 @@ export type FormData = {
 
 const ContactSection = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,6 +22,7 @@ const ContactSection = () => {
   const [submit, setSubmit] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
+    setLoading(true);
     e.preventDefault();
 
     if (!executeRecaptcha) {
@@ -34,6 +37,15 @@ const ContactSection = () => {
       message,
     };
 
+    if(!data.name.trim() || !data.email.trim() || !data.message.trim()) {
+      setSubmit("An error occurred. Please fill in all fields.");
+      setTimeout(() => {
+        setLoading(false);
+        setSubmit("");
+      }, 2000);
+      return;
+    }
+
     try {
       const response = await axios.post("/api/email", {
         ...data,
@@ -45,13 +57,17 @@ const ContactSection = () => {
         setName(name);
         setEmail(email);
         setMessage(message);
-        setName("");
-        setEmail("");
-        setMessage("");
+        setName('');
+        setEmail('');
+        setMessage('');
       }
     } catch (error) {
       setSubmit("An error occurred. Please try again later.");
     }
+    setTimeout(() => {
+      setLoading(false);
+      setSubmit("");
+    }, 2000);
   };
 
   return (
@@ -63,7 +79,7 @@ const ContactSection = () => {
                 <InputFields
                   type="text"
                   labelText="Full Name"
-                  inputName="name"
+                  inputName={name}
                   onChange={(e) => {setName(e.target.value);}}
                   textarea={false}
                 />
@@ -72,7 +88,7 @@ const ContactSection = () => {
               <InputFields
                 type="email"
                 labelText="Email"
-                inputName="email"
+                inputName={email}
                 onChange={(e) => setEmail(e.target.value)}
                 textarea={false}
               />
@@ -81,19 +97,19 @@ const ContactSection = () => {
               <InputFields
                 onChange={(e) => setMessage(e.target.value)}
                 labelText="Message"
-                inputName="message"
+                inputName={message}
                 type="text"
                 textarea
               />
             </div>
             <Button color="warning" type="submit">
-              Submit
+              {loading ? <BeatLoader color="#ffffff" loading={loading} size={10}/> : "Submit"}
             </Button>
           </form>
           {submit && (
             <p
               className={`text-lg text-center ${
-                submit.includes("error") ? "text-red-500" : "text-green-500"
+                submit.includes("error") ? "text-red-700" : "text-green-700"
               }`}
             >
               {submit}
