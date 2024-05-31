@@ -122,7 +122,7 @@ main {
         font-size: 3rem;
     }
     .contact-container {
-        padding: 12px;
+        padding: 0 12px;
     }
 }
 
@@ -195,7 +195,7 @@ main {
 
 #projects h1 {
     color: #363636;
-    font-family: "Courier New", monospace;
+    font-family: "hiragino", monospace;
 }
 
 .project-container  {
@@ -207,6 +207,49 @@ main {
     background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
 }
 
+.project-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .project-section h1 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #628395;
+    font-size:xx-large;
+    border-bottom: 1px solid #2d3748;
+  }
+  
+  .project-section p {
+    margin-bottom: 20px;
+  }
+  
+  .video-container {
+    width: 100%;
+    max-width: 1080px;
+    height: 0;
+    padding-bottom: 56.25%; /* for 16:9 aspect ratio */
+    position: relative;
+  }
+  
+  .project-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tech-list {
+    list-style-type: disc; /* this will add bullet points */
+    padding-left: 20px; /* this will add some space before the bullet points */
+  }
+  
+  .tech-list li {
+    font-weight: bold; /* this will make the text bold */
+  }
 
 
 /* ==================== CONTACT SECTION =========================== */
