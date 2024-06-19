@@ -27,7 +27,7 @@ const ProjectSection = () => {
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="project-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <div className="flex">
-            <Card className="submatch-card lg:w-[300px] py-4 bg-opacity-40 shadow-lg rounded-lg overflow-hidden">
+            <Card className="submatch-card lg:w-[300px] xl:min-h-[400px] py-4 bg-opacity-40 shadow-lg rounded-lg overflow-hidden">
               <CardHeader className="text-xl font-bold text-center p-4">
                 <h2 className="text-2xl font-bold text-center">
                   {submatch.title}
@@ -43,7 +43,7 @@ const ProjectSection = () => {
               </CardBody>
               <CardFooter className="justify-center p-2 border-t border-gray-200">
                 <Button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                  className="border border-gray-500 hover:bg-orange-700 w-[100px] bg-opacity-80 text-white font-bold rounded"
                   onClick={() => {
                     setIsClicked(true);
                     setProject(submatch);
@@ -57,7 +57,7 @@ const ProjectSection = () => {
             </Card>
           </div>
           <div className="flex">
-            <Card className="jedi-card py-4 bg-opacity-40 lg:w-[300px] shadow-lg rounded-lg overflow-hidden">
+            <Card className="jedi-card py-4 bg-opacity-40 xl:min-h-[400px] lg:w-[300px] shadow-lg rounded-lg overflow-hidden">
               <CardHeader className="text-xl font-bold text-center p-4">
                 <h2 className="text-2xl font-bold text-center">
                   {jediArchive.title}
@@ -73,7 +73,7 @@ const ProjectSection = () => {
               </CardBody>
               <CardFooter className="justify-center p-2 border-t border-gray-200">
                 <Button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                  className="hover:bg-orange-700 w-[100px] border border-gray-500 text-white bg-opacity-80 font-bold rounded"
                   onClick={() => {
                     setIsClicked(true);
                     setProject(jediArchive);

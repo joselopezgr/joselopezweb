@@ -74,7 +74,10 @@ const ContactSection = () => {
     <section id="contact" className="mx-auto max-w-6xl px-6">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="contact-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
-          <form onSubmit={handleSubmit} className="max-w-md w-full">
+          <div className="">
+            <h2 className="text-3xl font-bold text-center">Contact Me</h2>
+          </div>
+          <form onSubmit={handleSubmit} className="max-w-md w-full border-2 border-gray-500 p-4 rounded">
             <div className="mb-5">
               <InputFields
                 type="text"
