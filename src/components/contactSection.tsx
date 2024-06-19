@@ -37,7 +37,7 @@ const ContactSection = () => {
       message,
     };
 
-    if(!data.name.trim() || !data.email.trim() || !data.message.trim()) {
+    if (!data.name.trim() || !data.email.trim() || !data.message.trim()) {
       setSubmit("An error occurred. Please fill in all fields.");
       setTimeout(() => {
         setLoading(false);
@@ -57,9 +57,9 @@ const ContactSection = () => {
         setName(name);
         setEmail(email);
         setMessage(message);
-        setName('');
-        setEmail('');
-        setMessage('');
+        setName("");
+        setEmail("");
+        setMessage("");
       }
     } catch (error) {
       setSubmit("An error occurred. Please try again later.");
@@ -73,16 +73,18 @@ const ContactSection = () => {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
-        <div className="contact-container flex flex-col space-y-10 mt-12 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
+        <div className="contact-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <form onSubmit={handleSubmit} className="max-w-md w-full">
             <div className="mb-5">
-                <InputFields
-                  type="text"
-                  labelText="Full Name"
-                  inputName={name}
-                  onChange={(e) => {setName(e.target.value);}}
-                  textarea={false}
-                />
+              <InputFields
+                type="text"
+                labelText="Full Name"
+                inputName={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                textarea={false}
+              />
             </div>
             <div className="mb-5">
               <InputFields
@@ -103,7 +105,11 @@ const ContactSection = () => {
               />
             </div>
             <Button color="warning" type="submit">
-              {loading ? <BeatLoader color="#ffffff" loading={loading} size={10}/> : "Submit"}
+              {loading ? (
+                <BeatLoader color="#ffffff" loading={loading} size={10} />
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
           {submit && (

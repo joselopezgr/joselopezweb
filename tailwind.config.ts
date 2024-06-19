@@ -14,6 +14,8 @@ const config: Config = {
         syne: ["Syne", "san-serif"],
         abel: ["Abel", "san-serif"],
         "cabin-semi": ["Cabin", "sans-serif"],
+        exo: ["Exo 2", "sans-serif"],
+        silkscreen: ["Silkscreen", "sans-serif"],
       },
       fontSize: {
         "12xl": "12rem",

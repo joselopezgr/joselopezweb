@@ -34,7 +34,7 @@ const WavesSVG: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ position: "absolute", bottom: 0, width: "100%", zIndex: 0 }}>
+    <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1902 951"

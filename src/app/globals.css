@@ -1,6 +1,7 @@
 /* global.css */
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Cabin:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,7 +23,7 @@
     line-height: 1; 
     font-weight: 800;
     color: #363636;
-    font-family: 'hiragino', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     width: 100%; /* occupy 60% of the component */
     text-align: left; /* position the name on the left */
     overflow: hidden;
@@ -50,7 +51,9 @@
     }
 }
 
-
+p {
+    font-family: 'Exo 2', sans-serif;
+}
 /* When the screen size is 768px or more, decrease the font size */
 @media screen and (min-width: 768px) {
     .my-name {
@@ -179,13 +182,14 @@ main {
     font-weight: 600; /* font-semibold */
     display: flex; /* flex */
     align-items: center; /* items-center */
+    box-shadow: inset 0 0 0 1px #e2e8f0; /* border */
 }
 
 /*When I hover over the tech-buttons I want them to shrink and go this color #759aab */
 .tech-buttons:hover {
     transform: scale(0.95); /* hover:scale-95 */
     background-color: #628395; /* hover:bg-gray-300 */
-    color: #2d3748; /* hover:text-gray-700 */
+    color: #e9f0f7; /* hover:text-gray-700 */
 }
 
 

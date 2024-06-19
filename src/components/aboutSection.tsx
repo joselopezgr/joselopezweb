@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaAws, FaDocker, FaJava, FaReact } from "react-icons/fa";
 import {
   SiElastic,
+  SiNestjs,
   SiNextdotjs,
   SiRabbitmq,
   SiRuby,
@@ -12,6 +13,7 @@ import {
 import { DiMongodb } from "react-icons/di";
 import { IoLogoJavascript } from "react-icons/io5";
 import Link from "next/link";
+import { HiExternalLink } from "react-icons/hi";
 
 const technologies = [
   {
@@ -51,6 +53,12 @@ const technologies = [
     },
   },
   {
+    NestJS: {
+      icon: <SiNestjs />,
+      url: "https://docs.nestjs.com/",
+    },
+  },
+  {
     AWS: { icon: <FaAws />, url: "https://docs.aws.amazon.com/" },
   },
   {
@@ -83,8 +91,8 @@ const AboutSection = () => {
   return (
     <section id="about" className="mx-auto max-w-6xl px-6">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
-        <div className="about-container flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
-          <div className="md:w-1/2 p-8">
+        <div className="about-container flex flex-col min-h-[600px] items-center items-stretch space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
+          <div className="md:w-1/2 p-8 border border-red-200">
             <h2 className="font-bold text-2xl">
               Hi there! It`s <span style={{ color: "#628395" }}>{"Jose"}</span>{" "}
               here
@@ -116,19 +124,22 @@ const AboutSection = () => {
               Microservices, and Next.js (which I used to build my website).
             </p>
             <br />
-            <p>But wait, there&apos;s more!</p>
-            <br />
             <p>
               <span className="font-bold">
-                <a href="https://github.com/joselopezgr/joselopezweb/blob/main/README.md" target="_blank" className="hover:text-sky-600">
-                  [Checkout the Readme to continue reading]
+                <a
+                  href="https://github.com/joselopezgr/joselopezweb/blob/main/README.md"
+                  target="_blank"
+                  className="hover:text-sky-600"
+                >
+                  [Read more about me here]
+                  <HiExternalLink />
                 </a>
               </span>
             </p>
           </div>
 
           <div className="text-center md:w-1/2 md:text-left p-8">
-            <h2 className="text-2xl font-bold mb-6">Tools and skills</h2>
+            <h2 className="text-2xl font-bold mb-6">Tech and skills</h2>
             <div className=" flex flex-wrap flex-row justify-center z-10 md:justify-start">
               {technologies.map((item, idx) => {
                 const [key, value] = Object.entries(item)[0];
@@ -141,11 +152,9 @@ const AboutSection = () => {
                   </Link>
                 );
               })}
-              <p id="extra-text">And much mor<span style={{ color: "#d66853" }}>e</span> to com<span style={{ color: "#d66853" }}>e</span> </p>
             </div>
           </div>
         </div>
-        <div className="flex flex-row items-center text-center justify-center mt-4 "></div>
       </div>
     </section>
   );

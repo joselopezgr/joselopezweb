@@ -1,56 +1,138 @@
 "use client";
-import { Card, CardBody, CardHeader, Image } from "@nextui-org/react";
-import { url } from "inspector";
-import React from "react";
-import { Fade } from "react-awesome-reveal";
-import { Link } from "react-scroll";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Divider,
+  Image,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  useDisclosure,
+} from "@nextui-org/react";
+import React, { useState } from "react";
+import { submatch, jediArchive, ProjectStructure } from "@/utils/projects";
+import { FaGithub, FaPlusCircle } from "react-icons/fa";
 
 const ProjectSection = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const [project, setProject] = useState({} as ProjectStructure);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  console.log("project", project);
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
-        <div className="project-container flex justify-center items-center h-full pt-8 pb-8">
-          <div className="project-section">
-            <h1>Submatch</h1>
-            <p className="text-left ml-6">
-              This is a project that I worked on during my time at{" "}
-              <a href="https://www.tes.com/en-gb">Tes</a>. It is a substitute
-              teacher booking system that allows schools to request them based
-              on their availability and qualifications. The system also allows
-              the teachers to accept or decline the request.
-              <br />
-              <br />
-              The project was built using the following technologies:
-              <br />
-              <br />
-              <ul className="tech-list">
-                <li>Next.js & TS</li>
-                <li>Java & Spring Boot</li>
-                <li>Domain Driven Design</li>
-                <li>Hexagonal Architecture</li>
-                <li>OOP & SOLID principles</li>
-                <li>Micro-services</li>
-                <li>MongoDB</li>
-                <li>STOMP Websocket</li>
-                <li>Java Mail for SMTP</li>
-              </ul>
-            </p>
-            <p style={{color: "#d66853"}}>
-              Click or hover over to watch the video demo of the project.
-            </p>
-            <div className="video-container">
-              <video
-                className="project-video"
-                onMouseOver={(event) => event.currentTarget.play()}
-                onMouseOut={(event) => event.currentTarget.pause()}
-              >
-                <source src="/videos/submatch.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <h2 className="italic">Project code can be review under request</h2>
+        <div className="project-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
+          <div className="flex">
+            <Card className="submatch-card lg:w-[300px] py-4 bg-opacity-40 shadow-lg rounded-lg overflow-hidden">
+              <CardHeader className="text-xl font-bold text-center p-4">
+                <h2 className="text-2xl font-bold text-center">
+                  {submatch.title}
+                </h2>
+              </CardHeader>
+              <CardBody className="overflow-visible p-4 items-center">
+                <Image
+                  src={submatch.picture}
+                  alt="Submatch"
+                  width={200}
+                  height={200}
+                />
+              </CardBody>
+              <CardFooter className="justify-center p-2 border-t border-gray-200">
+                <Button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                  onClick={() => {
+                    setIsClicked(true);
+                    setProject(submatch);
+                    onOpen();
+                  }}
+                  isIconOnly
+                >
+                  <FaPlusCircle />
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+          <div className="flex">
+            <Card className="jedi-card py-4 bg-opacity-40 lg:w-[300px] shadow-lg rounded-lg overflow-hidden">
+              <CardHeader className="text-xl font-bold text-center p-4">
+                <h2 className="text-2xl font-bold text-center">
+                  {jediArchive.title}
+                </h2>
+              </CardHeader>
+              <CardBody className="overflow-visible p-4">
+                <Image
+                  src={jediArchive.picture}
+                  alt="Submatch"
+                  width={300}
+                  height={300}
+                />
+              </CardBody>
+              <CardFooter className="justify-center p-2 border-t border-gray-200">
+                <Button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                  onClick={() => {
+                    setIsClicked(true);
+                    setProject(jediArchive);
+                    onOpen();
+                  }}
+                  isIconOnly
+                >
+                  <FaPlusCircle />
+                </Button>
+              </CardFooter>
+            </Card>
           </div>
         </div>
+        {isClicked && project && (
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">
+            <ModalContent className="p-6 bg-white rounded-lg shadow-xl">
+              {(onClose) => (
+                <>
+                  <ModalHeader className="text-xl font-bold">
+                    {project.title}
+                  </ModalHeader>
+                  <Divider className="mb-4" />
+                  <p>{project.description}</p>
+                  <br />
+                  <p className="font-semibold">Tech Stack used:</p>
+                  <br />
+                  <ul className="ml-4 mb-4">
+                    {project.techStack.map((tech, index) => (
+                      <>
+                        <li key={index} className="mb-1">
+                          &bull; {tech}
+                        </li>
+                      </>
+                    ))}
+                  </ul>
+                  <Divider className="mb-2" />
+                  <div className="flex items-center justify-between py-2">
+                    <Button
+                      onPress={onClose}
+                      onClick={() => setProject({} as ProjectStructure)}
+                      color="danger"
+                    >
+                      Close
+                    </Button>
+                    <div className="">
+                      <Button
+                        onClick={() => window.open(project.github)}
+                        className="text-white font-bold rounded"
+                        color="warning"
+                      >
+                        Go to the code <FaGithub />
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        )}
       </div>
     </section>
   );
