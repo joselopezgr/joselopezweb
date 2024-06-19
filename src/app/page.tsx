@@ -13,7 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 type Section = "About" | "Projects" | "Contact";
 
 const Index = () => {
-  const [selectedSection, setSelectedSection] = useState<Section>("Contact");
+  const [selectedSection, setSelectedSection] = useState<Section>("About");
 
   const sectionComponents: Record<Section, JSX.Element> = {
     About: <AboutSection />,
@@ -50,9 +50,9 @@ const Index = () => {
           {selectedSection && (
             <motion.div
               key={selectedSection}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20}}
               transition={{ duration: 0.5 }}
             >
               {sectionComponents[selectedSection]}
