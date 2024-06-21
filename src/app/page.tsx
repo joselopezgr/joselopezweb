@@ -9,8 +9,9 @@ import LetsConnect from "@/components/others/letsConnect";
 import WavesSVG from "@/components/others/wavesSVG";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import ReadingListSection from "@/components/readingListSection";
 
-type Section = "About" | "Projects" | "Contact";
+type Section = "About" | "Projects" | "Contact" | "Readings";
 
 const Index = () => {
   const [selectedSection, setSelectedSection] = useState<Section>("About");
@@ -19,6 +20,7 @@ const Index = () => {
     About: <AboutSection />,
     Projects: <ProjectSection />,
     Contact: <ContactSection />,
+    Readings: <ReadingListSection />,
   };
 
   return (

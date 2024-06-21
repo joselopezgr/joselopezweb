@@ -21,7 +21,7 @@ const ProjectSection = () => {
   const [project, setProject] = useState({} as ProjectStructure);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  console.log("project", project);
+
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">

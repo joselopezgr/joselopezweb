@@ -281,6 +281,18 @@ textarea {
 }
 
 
+/* ==================== READINGS SECTION =========================== */
+
+.list-container  {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border: 2px solid #628395;
+    border-radius: 15px;
+    color: #363636 ;
+    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
+}
+
+
 /* ==================== FOOTER SECTION =========================== */
 
 

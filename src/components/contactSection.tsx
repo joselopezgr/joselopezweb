@@ -78,6 +78,7 @@ const ContactSection = () => {
             <h2 className="text-3xl font-bold text-center">Contact Me</h2>
           </div>
           <form onSubmit={handleSubmit} className="max-w-md w-full border-2 border-gray-500 p-4 rounded">
+          
             <div className="mb-5">
               <InputFields
                 type="text"
