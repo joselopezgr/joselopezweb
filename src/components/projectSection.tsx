@@ -23,7 +23,7 @@ const ProjectSection = () => {
 
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="mx-auto max-w-6xl">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="project-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           <div className="flex">
@@ -88,7 +88,7 @@ const ProjectSection = () => {
           </div>
         </div>
         {isClicked && project && (
-          <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
             <ModalContent className="p-6 bg-white rounded-lg shadow-xl">
               {(onClose) => (
                 <>

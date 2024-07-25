@@ -34,14 +34,14 @@ const Index = () => {
       >
         <HiArrowDown size={35} className="animate-bounce" />
       </div>
-      <div className="p-12 my-20 z-10 relative">
-        <div className="selector-row flex justify-center gap-8 my-4">
+      <div className="p-6 md:p-14 my-20 z-10 relative">
+        <div className="selector-row flex flex-col md:flex-row justify-center gap-4 md:gap-8 my-4">
           {Object.keys(sectionComponents).map((section, index) => (
             <button
               key={index}
               className={`selector-button ${
                 selectedSection === section ? "selected" : ""
-              } text-3xl font-silkscreen border-b-2 border-transparent hover:border-gray-500 focus:outline-none transition duration-300 ease-in-out t`}
+              } text-2xl md:text-3xl font-silkscreen border-b-2 border-transparent hover:border-gray-500 focus:outline-none transition duration-300 ease-in-out t`}
               onClick={() => setSelectedSection(section as Section)}
             >
               {section}

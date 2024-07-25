@@ -36,7 +36,7 @@ const ReadingListSection = () => {
   ];
 
   return (
-    <section id="readingList" className="mx-auto max-w-6xl px-6">
+    <section id="readingList" className="mx-auto max-w-6xl">
       <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
         <div className="list-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-start md:flex-flow md:text-left">
           <div className="w-full md:w-2/3 px-4">
