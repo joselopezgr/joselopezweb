@@ -1,67 +1,86 @@
 "use client";
+
+import { useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import HeroSection from "@/components/heroSection";
 import AboutSection from "@/components/aboutSection";
 import ProjectSection from "@/components/projectSection";
 import ContactSection from "@/components/contactSection";
-import { HiArrowDown } from "react-icons/hi";
 import Footer from "@/components/others/footer";
 import LetsConnect from "@/components/others/letsConnect";
 import WavesSVG from "@/components/others/wavesSVG";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import ReadingListSection from "@/components/readingListSection";
+import BeyondWorkSection from "@/components/readingListSection";
 
-type Section = "About" | "Projects" | "Contact" | "Readings";
+type SectionKey = "About" | "Projects" | "Contact" | "Beyond";
+
+const sections: Array<{ key: SectionKey; label: string }> = [
+  { key: "About", label: "About" },
+  { key: "Projects", label: "Projects" },
+  { key: "Contact", label: "Contact" },
+  { key: "Beyond", label: "Beyond work" },
+];
+
+const sectionComponents: Record<SectionKey, JSX.Element> = {
+  About: <AboutSection />,
+  Projects: <ProjectSection />,
+  Contact: <ContactSection />,
+  Beyond: <BeyondWorkSection />,
+};
 
 const Index = () => {
-  const [selectedSection, setSelectedSection] = useState<Section>("About");
-
-  const sectionComponents: Record<Section, JSX.Element> = {
-    About: <AboutSection />,
-    Projects: <ProjectSection />,
-    Contact: <ContactSection />,
-    Readings: <ReadingListSection />,
-  };
+  const [selectedSection, setSelectedSection] = useState<SectionKey>("About");
+  const tabRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="mx-auto max-w-12xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 overflow-x-hidden">
+    <main className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 overflow-x-hidden">
       <WavesSVG />
-      {/* <SvgComponent/> */}
-      <HeroSection />
-      <div
-        className="remaining-part flex flex-row items-center text-center justify-center"
-        style={{ color: "#363636" }}
-      >
-        <HiArrowDown size={35} className="animate-bounce" />
-      </div>
-      <div className="p-6 md:p-14 my-20 z-10 relative">
-        <div className="selector-row flex flex-col md:flex-row justify-center gap-4 md:gap-8 my-4">
-          {Object.keys(sectionComponents).map((section, index) => (
-            <button
-              key={index}
-              className={`selector-button ${
-                selectedSection === section ? "selected" : ""
-              } text-2xl md:text-3xl font-silkscreen border-b-2 border-transparent hover:border-gray-500 focus:outline-none transition duration-300 ease-in-out t`}
-              onClick={() => setSelectedSection(section as Section)}
-            >
-              {section}
-            </button>
-          ))}
+      <HeroSection onGoTo={(section) =>{
+        setSelectedSection(section);
+        tabRef.current?.scrollIntoView({behavior: "smooth", block: "start"})
+      }}/>
+
+      <div ref={tabRef} className="p-6 md:p-14 my-20 z-10 relative">
+        {/* Selector row */}
+        <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 my-4">
+          {sections.map((s) => {
+            const selected = selectedSection === s.key;
+
+            return (
+              <button
+                key={s.key}
+                onClick={() => setSelectedSection(s.key)}
+                className={[
+                  "text-2xl md:text-3xl font-silkscreen",
+                  "border-b-2 pb-1 transition duration-200 ease-in-out",
+                  "focus:outline-none",
+                  selected ? "border-gray-800" : "border-transparent hover:border-gray-500",
+                ].join(" ")}
+              >
+                {s.label}
+              </button>
+            );
+          })}
         </div>
-        <AnimatePresence mode="wait">
-          {selectedSection && (
+
+          <div
+            className="relative h-[75vh] overflow-y-auto hide-scrollbar rounded-2xl"
+          >
+            {/* Motion content */}
+          <AnimatePresence mode="wait" initial={false} presenceAffectsLayout={false}>
             <motion.div
               key={selectedSection}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20}}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="min-h-[700px] md:min-h-[900px] lg:min-h-[1000px]"
             >
               {sectionComponents[selectedSection]}
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </AnimatePresence>
+          </div>
+        </div>
 
       <LetsConnect />
       <Footer />
