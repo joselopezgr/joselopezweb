@@ -34,9 +34,8 @@ const technologies: Tech[] = [
   { label: "AWS", icon: <FaAws />, url: "https://docs.aws.amazon.com/" },
   { label: "RabbitMQ", icon: <SiRabbitmq />, url: "https://www.rabbitmq.com/documentation.html" },
   { label: "MongoDB", icon: <DiMongodb />, url: "https://www.mongodb.com/docs/" },
-  { label: "Elastic Stack", icon: <SiElastic />, url: "https://www.elastic.co/guide/index.html" },
   { label: "Docker", icon: <FaDocker />, url: "https://docs.docker.com/" },
-  { label: "Ruby", icon: <SiRuby />, url: "https://ruby-doc.org/" },
+  { label: "Kubernetes", icon: "K8s", url: "https://kubernetes.io/docs/home/" },
 ];
 
 const AboutSection = () => {
@@ -51,7 +50,7 @@ const AboutSection = () => {
                 Hi, I’m <span className="text-sky-700">Jose</span>.
               </h2>
               <p className="mt-3 text-lg opacity-80 max-w-xl">
-                A <span className="font-semibold">backend-leaning software engineer</span> based in{" "}
+                A <span className="font-semibold">full-stack software engineer</span> based in{" "}
                 <span className="font-semibold">Leeds, UK</span>, with strong experience building APIs,
                 integration services, and platform features — and comfortable working full-stack
                 when the problem calls for it.

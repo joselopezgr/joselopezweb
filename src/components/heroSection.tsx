@@ -12,7 +12,7 @@ type HeroProps = {
 const HeroSection = ({ onGoTo }: HeroProps) => {
   const prefersReducedMotion = useReducedMotion();
 
-  const fullName = "José\nLopez";
+  const fullName = "José\nLópez";
   const chars = fullName.split("");
 
   const container = {
@@ -74,7 +74,7 @@ const HeroSection = ({ onGoTo }: HeroProps) => {
           {chars.map((c, i) => {
             if (c === "\n") return <br key={`br-${i}`} />;
 
-            const isAccent = c.toLowerCase() === "é" || c.toLowerCase() === "e";
+            const isAccent = c.toLowerCase() === "é" || c.toLowerCase() === "ó";
             return (
               <motion.span
                 key={`${c}-${i}`}
