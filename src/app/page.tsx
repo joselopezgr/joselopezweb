@@ -9,7 +9,7 @@ import ProjectSection from "@/components/projectSection";
 import ContactSection from "@/components/contactSection";
 import Footer from "@/components/others/footer";
 import LetsConnect from "@/components/others/letsConnect";
-import WavesSVG from "@/components/others/wavesSVG";
+// import WavesSVG from "@/components/others/wavesSVG";
 import BeyondWorkSection from "@/components/readingListSection";
 
 type SectionKey = "About" | "Projects" | "Contact" | "Beyond";
@@ -39,7 +39,7 @@ const Index = () => {
 
   return (
     <main className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 overflow-x-hidden">
-      <WavesSVG />
+      {/* <WavesSVG /> */}
       <HeroSection
         onGoTo={(section) => {
           goTo(section);

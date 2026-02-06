@@ -1,315 +1,262 @@
 /* global.css */
-@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Cabin:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: 'hiragino';
-    src: url('/fonts/HiraginoSansGB-W6.ttf') format('truetype');
+  font-family: "hiragino";
+  src: url("/fonts/HiraginoSansGB-W6.ttf") format("truetype");
 }
 
+/* =========================
+   Theme tokens (single source of truth)
+   ========================= */
+:root {
+  /* Backgrounds */
+  --bg-main: #f8ebe3;
+  --bg-soft: #f9dcca;
+  --surface: rgba(255, 255, 255, 0.6);
 
-/* ============= HERO SECTION =============== */
+  /* Text */
+  --text: #363636;
+  --text-muted: rgba(54, 54, 54, 0.72);
 
+  /* Accents */
+  --accent: #d66853; 
+  --accent-2: #628395;
 
+  /* Borders / UI */
+  --border: rgba(54, 54, 54, 0.15);
+  --hover: rgba(0, 0, 0, 0.04);
+}
 
+/* =========================
+   Base + layout
+   ========================= */
+html,
+body {
+  font-family: "Exo 2", sans-serif;
+  color: var(--text);
+}
+
+.root-body {
+  background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
+}
+
+main {
+  min-height: 100vh;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   Shared surfaces (cards/sections)
+   ========================= */
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+}
+
+.about-container,
+.project-container,
+.contact-container,
+.list-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+}
+
+/* =========================
+   Hero (legacy support)
+   - You’re moving to framer-motion hero, but these keep old styles safe if used
+   ========================= */
 .my-name {
-    font-size: 4rem; /* default size */
-    line-height: 1; 
-    font-weight: 800;
-    color: #363636;
-    font-family: 'Exo 2', sans-serif;
-    width: 100%; /* occupy 60% of the component */
-    overflow: hidden;
-    margin-top: 12rem; /* add margin on top */
-    margin-bottom: 10rem; /* add margin on bottom */
-    padding-top: 1rem; /* add padding on top */
-    padding-bottom: 1rem; /* add padding on bottom */
+  color: var(--text);
+  font-family: "Exo 2", sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 6rem;
+  margin-bottom: 5rem;
+  padding: 1rem 0;
+
+  font-size: 4rem;
+}
+
+@media (min-width: 768px) {
+  .my-name {
+    font-size: 6rem;
+    margin-top: 7rem;
+    margin-bottom: 6rem;
+  }
+}
+@media (min-width: 1024px) {
+  .my-name {
+    font-size: 9rem;
+    margin-top: 8rem;
+    margin-bottom: 6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .my-name {
+    font-size: 11rem;
+  }
 }
 
 .char {
-    display: inline-block;
-    animation: slide-up 1s ease-in-out forwards;
-    transform: translateY(100%);
-    opacity: 0;
+  display: inline-block;
+  animation: slide-up 0.9s ease-in-out forwards;
+  transform: translateY(100%);
+  opacity: 0;
 }
-
 @keyframes slide-up {
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-html, body {
-  font-family: 'Exo 2', sans-serif;
-}
-/* When the screen size is 768px or more, decrease the font size */
-@media screen and (min-width: 768px) {
-    .my-name {
-        font-size: 6rem;
-    }
-}
+/* =========================
+   About
+   ========================= */
+.titleStyle {
+  font-family: "hiragino", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--text);
+  width: 100%;
+  overflow: hidden;
 
-/* When the screen size is 1024px or more, decrease the font size even more */
-@media screen and (min-width: 1024px) {
-    .my-name {
-        font-size: 10rem;
-    }
-}
-
-/* When the screen size is 1200px or more, decrease the font size even more */
-@media screen and (min-width: 1200px) {
-    .my-name {
-        font-size: 12rem;
-    }
+  margin-top: 6rem;
+  padding: 1rem 0;
+  font-size: 3rem;
 }
 
-/* ============= ROOT AND MAIN PART =============== */
-
-
-/* styles.css */
-.root-body { 
-    background: linear-gradient(180deg, #f8ebe3 3%, #f9dcca 90%);
-    border: 1px solid #FFFFFF;
-    background-repeat: no-repeat;
+@media (min-width: 768px) {
+  .titleStyle {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .titleStyle {
+    font-size: 5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .titleStyle {
+    font-size: 6.5rem;
+  }
 }
 
-main { 
-    background-image: linear-gradient(180deg, #f8ebe3 10%, #f9dcca 50%);
-    position: relative;
-    min-height: 100vh; /* Ensure it takes at least full viewport height */
+#extra-text {
+  color: var(--text-muted);
+  padding-top: 10px;
+  font-style: italic;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* take up the full height of its parent */
+/* =========================
+   Tech pills
+   ========================= */
+.tech-buttons {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
 }
 
-.my-name-wrapper {
-    flex: 1; /* take up all available space */
-    display: flex;
-    align-items: center; /* vertically center the content */
+.tech-buttons:hover {
+  transform: scale(0.97);
+  background-color: var(--accent-2);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: #fff;
 }
 
+/* =========================
+   Projects (keep only what you still use)
+   ========================= */
+.project-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.project-section h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--accent-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.video-container {
+  width: 100%;
+  max-width: 1080px;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+.project-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tech-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.tech-list li {
+  font-weight: 600;
+}
+
+/* =========================
+   Contact (scope input styles so they don’t fight NextUI globally)
+   ========================= */
 .contact-container input,
 .contact-container textarea {
-  background-color: #f7fafc;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
-/* Hide scrollbar but keep scrolling */
-.hide-scrollbar {
-  -ms-overflow-style: none;     /* IE & Edge */
-  scrollbar-width: none;        /* Firefox */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;                /* Chrome, Safari, Opera */
-}
-
-/* ==================== ABOUT SECTION =========================== */
-
-.titleStyle {
-    font-size: 4rem;
-    line-height: 1; 
-    font-weight: 400;
-    color: #363636;
-    font-family: 'hiragino', sans-serif;
-    width: 100%; 
-    overflow: hidden;
-    margin-top: 8rem; 
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-/* When the screen size is less than 768px, set the font size to 4rem */
-@media screen and (max-width: 767px) {
-    .titleStyle {
-        font-size: 3rem;
-    }
-    .contact-container {
-        padding: 0 12px;
-    }
-}
-
-/* When the screen size is 768px or more, decrease the font size */
-@media screen and (min-width: 768px) {
-    .titleStyle {
-        font-size: 4rem;
-    }
-}
-
-/* When the screen size is 1024px or more, decrease the font size even more */
-@media screen and (min-width: 1024px) {
-    .titleStyle {
-        font-size: 5rem;
-    }
-}
-
-/* When the screen size is 1200px or more, decrease the font size even more */
-@media screen and (min-width: 1200px) {
-    .titleStyle {
-        font-size: 7rem;
-    }
-}
-
-
-
-
-.about-container { 
-        border-radius: 15px;
-        color: #363636 ;
-        background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
-}
-
-#extra-text{
-    color: #38302e;
-    font-family: 'syne', sans-serif;
-    padding-top: 10px;
-    font-style: italic;
-}
-
-.tech-buttons {
-    background-color: #f7fafc; /* bg-gray-200 */
-    transition-duration: 0.3s; /* ease-in */
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in */
-    padding-left: 1rem; /* px-4 */
-    padding-right: 1rem; /* px-4 */
-    padding-top: 0.5rem; /* py-2 */
-    padding-bottom: 0.5rem; /* py-2 */
-    margin-right: 0.5rem; /* mr-2 */
-    margin-top: 0.5rem; /* mt-2 */
-    color: #38302e; /* text-gray-500 */
-    border-radius: 0.375rem; /* rounded */
-    font-weight: 600; /* font-semibold */
-    display: flex; /* flex */
-    align-items: center; /* items-center */
-    box-shadow: inset 0 0 0 1px #e2e8f0; /* border */
-}
-
-/*When I hover over the tech-buttons I want them to shrink and go this color #759aab */
-.tech-buttons:hover {
-    transform: scale(0.95); /* hover:scale-95 */
-    background-color: #628395; /* hover:bg-gray-300 */
-    color: #e9f0f7; /* hover:text-gray-700 */
-}
-
-
-
-/* ==================== PROJECTS SECTION =========================== */
-
-
-#projects h1 {
-    color: #363636;
-    font-family: "hiragino", monospace;
-}
-
-.project-container  {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-radius: 15px;
-    color: #363636 ;
-    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
-}
-
-.project-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+@media (max-width: 767px) {
+  .contact-container {
+    padding: 0 12px;
   }
-  
-  .project-section h1 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #628395;
-    font-size:xx-large;
-    border-bottom: 1px solid #2d3748;
-  }
-  
-  .project-section p {
-    margin-bottom: 20px;
-  }
-  
-  .video-container {
-    width: 100%;
-    max-width: 1080px;
-    height: 0;
-    padding-bottom: 56.25%; /* for 16:9 aspect ratio */
-    position: relative;
-  }
-  
-  .project-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .tech-list {
-    list-style-type: disc; /* this will add bullet points */
-    padding-left: 20px; /* this will add some space before the bullet points */
-  }
-  
-  .tech-list li {
-    font-weight: bold; /* this will make the text bold */
-  }
-
-
-/* ==================== CONTACT SECTION =========================== */
-
-
-#contact h1 {
-    color: #363636;
-    font-family: "Courier New", monospace;
 }
 
-.contact-container {
-    border-radius: 15px;
-    color: #363636 ;
-    font-family: 'syne', sans-serif;
-    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
-}
-
- input {
-    background-color: #f7fafc;
-}
-
-textarea {
-    background-color: #f7fafc;
-}
-
-
-/* ==================== READINGS SECTION =========================== */
-
-.list-container  {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-radius: 15px;
-    color: #363636 ;
-    background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
-}
-
-
-/* ==================== FOOTER SECTION =========================== */
-
-
+/* =========================
+   Footer
+   ========================= */
 footer {
-    color: #363636;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    font-family: 'hiragino', sans-serif;
-    border-top: 3px solid #628395; /* Add border style and width */
+  color: var(--text);
+  padding: 1rem 0;
+  font-family: "hiragino", sans-serif;
+  border-top: 3px solid var(--accent-2);
 }
-
