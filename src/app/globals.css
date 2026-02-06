@@ -25,7 +25,6 @@
     color: #363636;
     font-family: 'Exo 2', sans-serif;
     width: 100%; /* occupy 60% of the component */
-    text-align: left; /* position the name on the left */
     overflow: hidden;
     margin-top: 12rem; /* add margin on top */
     margin-bottom: 10rem; /* add margin on bottom */
@@ -51,8 +50,8 @@
     }
 }
 
-p {
-    font-family: 'Exo 2', sans-serif;
+html, body {
+  font-family: 'Exo 2', sans-serif;
 }
 /* When the screen size is 768px or more, decrease the font size */
 @media screen and (min-width: 768px) {
@@ -82,7 +81,6 @@ p {
 .root-body { 
     background: linear-gradient(180deg, #f8ebe3 3%, #f9dcca 90%);
     border: 1px solid #FFFFFF;
-    background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
@@ -99,10 +97,25 @@ main {
 }
 
 .my-name-wrapper {
-    flex: 4; /* take up 4/5 of the available space */
+    flex: 1; /* take up all available space */
+    display: flex;
+    align-items: center; /* vertically center the content */
 }
 
+.contact-container input,
+.contact-container textarea {
+  background-color: #f7fafc;
+}
 
+/* Hide scrollbar but keep scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;     /* IE & Edge */
+  scrollbar-width: none;        /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
 
 /* ==================== ABOUT SECTION =========================== */
 
@@ -155,7 +168,6 @@ main {
 
 .about-container { 
         border-radius: 15px;
-        border: 2px solid #628395;
         color: #363636 ;
         background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
 }
@@ -205,7 +217,6 @@ main {
 .project-container  {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    border: 2px solid #628395;
     border-radius: 15px;
     color: #363636 ;
     background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */
@@ -265,7 +276,6 @@ main {
 }
 
 .contact-container {
-    border: 2px solid #628395;
     border-radius: 15px;
     color: #363636 ;
     font-family: 'syne', sans-serif;
@@ -286,7 +296,6 @@ textarea {
 .list-container  {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    border: 2px solid #628395;
     border-radius: 15px;
     color: #363636 ;
     background: rgba(44, 30, 30, 0.05); /* semi-transparent white background */

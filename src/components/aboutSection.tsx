@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
+import { HiExternalLink } from "react-icons/hi";
 import { FaAws, FaDocker, FaJava, FaReact } from "react-icons/fa";
 import {
   SiElastic,
@@ -12,146 +15,156 @@ import {
 } from "react-icons/si";
 import { DiMongodb } from "react-icons/di";
 import { IoLogoJavascript } from "react-icons/io5";
-import Link from "next/link";
-import { HiExternalLink } from "react-icons/hi";
+import { Chip } from "@nextui-org/react";
 
-const technologies = [
-  {
-    Java: {
-      icon: <FaJava />,
-      url: "https://docs.oracle.com/en/java/",
-    },
-  },
-  {
-    TypeScript: {
-      icon: <SiTypescript />,
-      url: "https://www.typescriptlang.org/docs/",
-    },
-  },
-  {
-    JavaScript: {
-      icon: <IoLogoJavascript />,
-      url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    },
-  },
-  {
-    SpringBoot: {
-      icon: <SiSpringboot />,
-      url: "https://spring.io/projects/spring-boot",
-    },
-  },
-  {
-    Ruby: { icon: <SiRuby />, url: "https://ruby-doc.org/" },
-  },
-  {
-    React: { icon: <FaReact />, url: "https://react.dev/" },
-  },
-  {
-    Nextjs: {
-      icon: <SiNextdotjs />,
-      url: "https://nextjs.org/docs",
-    },
-  },
-  {
-    NestJS: {
-      icon: <SiNestjs />,
-      url: "https://docs.nestjs.com/",
-    },
-  },
-  {
-    AWS: { icon: <FaAws />, url: "https://docs.aws.amazon.com/" },
-  },
-  {
-    RabbitMQ: {
-      icon: <SiRabbitmq />,
-      url: "https://www.rabbitmq.com/documentation.html",
-    },
-  },
-  {
-    MongoDB: {
-      icon: <DiMongodb />,
-      url: "https://www.mongodb.com/docs/",
-    },
-  },
-  {
-    ElasticStack: {
-      icon: <SiElastic />,
-      url: "https://www.elastic.co/guide/index.html?utm_campaign=Google-B-EMEA-UKI-Exact&utm_content=Stack-Documentation&utm_source=google&utm_medium=cpc&device=c&utm_term=elasticsearch%20documentation&gad_source=1&gclid=CjwKCAiAzJOtBhALEiwAtwj8tmbNwjhAC2TgnNkX7bt5Wf3ygjNFuqXqNCieEwG4il8yLvKTVeEPuRoC6gcQAvD_BwE",
-    },
-  },
-  {
-    Docker: {
-      icon: <FaDocker />,
-      url: "https://docs.docker.com/",
-    },
-  },
+type Tech = {
+  label: string;
+  icon: React.ReactNode;
+  url?: string;
+};
+
+const technologies: Tech[] = [
+  { label: "Java", icon: <FaJava />, url: "https://docs.oracle.com/en/java/" },
+  { label: "TypeScript", icon: <SiTypescript />, url: "https://www.typescriptlang.org/docs/" },
+  { label: "JavaScript", icon: <IoLogoJavascript />, url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  { label: "Spring Boot", icon: <SiSpringboot />, url: "https://spring.io/projects/spring-boot" },
+  { label: "NestJS", icon: <SiNestjs />, url: "https://docs.nestjs.com/" },
+  { label: "React", icon: <FaReact />, url: "https://react.dev/" },
+  { label: "Next.js", icon: <SiNextdotjs />, url: "https://nextjs.org/docs" },
+  { label: "AWS", icon: <FaAws />, url: "https://docs.aws.amazon.com/" },
+  { label: "RabbitMQ", icon: <SiRabbitmq />, url: "https://www.rabbitmq.com/documentation.html" },
+  { label: "MongoDB", icon: <DiMongodb />, url: "https://www.mongodb.com/docs/" },
+  { label: "Docker", icon: <FaDocker />, url: "https://docs.docker.com/" },
+  { label: "Kubernetes", icon: "K8s", url: "https://kubernetes.io/docs/home/" },
 ];
 
 const AboutSection = () => {
   return (
-    <section id="about" className="mx-auto max-w-6xl">
-      <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
-        <div className="about-container flex flex-col min-h-[600px] items-center items-stretch space-y-10 mt-12 justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
-          <div className="md:w-1/2 p-8 border border-red-200">
-            <h2 className="font-bold text-2xl">
-              Hi there! It`s <span style={{ color: "#628395" }}>{"Jose"}</span>{" "}
-              here
-            </h2>
-            <br />
-            <p>
-              I am a{" "}
-              <span className="font-bold" style={{ color: "#628395" }}>
-                {"Software Engineer"}
-              </span>{" "}
-              who calls the vibrant city of{" "}
-              <span className="font-bold" style={{ color: "#628395" }}>
-                {" Leeds, UK"}
-              </span>{" "}
-              home.
-            </p>
-            <p>
-              My coding journey kicked off at a bootcamp, and boy, what a ride
-              it&apos;s been! From there, I landed an apprenticeship at an
-              EdTech company, where my knowledge expanded faster than
-              JavaScript&apos;s ecosystem.{" "}
-            </p>
-            <br />
-            <p>
-              Speaking of JavaScript, that&apos;s where I took my first coding
-              steps. But the bootcamp had me diving deep into the world of
-              vanilla Ruby, where I got my hands dirty with the fundamentals of
-              OOP. During my work placement, I got to tinker with TypeScript,
-              Microservices, and Next.js (which I used to build my website).
-            </p>
-            <br />
-            <p>
-              <span className="font-bold">
-                <a
-                  href="https://github.com/joselopezgr/joselopezweb/blob/main/README.md"
-                  target="_blank"
-                  className="hover:text-sky-600"
-                >
-                  [Read more about me here]
-                  <HiExternalLink />
-                </a>
+    <section id="about" className="mx-auto max-w-6xl px-4">
+      <div className="py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          {/* LEFT */}
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-3xl font-bold leading-tight">
+                Hi, I’m <span className="text-sky-700">Jose</span>.
+              </h2>
+              <p className="mt-3 text-lg opacity-80 max-w-xl">
+                A <span className="font-semibold">full-stack software engineer</span> based in{" "}
+                <span className="font-semibold">Leeds, UK</span>, with strong experience building APIs,
+                integration services, and platform features — and comfortable working full-stack
+                when the problem calls for it.
+              </p>
+            </div>
+
+            {/* What I focus on */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">What I focus on</p>
+              <ul className="mt-3 list-disc ml-5 space-y-2 opacity-90">
+                <li>Designing and implementing reliable backend services with clear API contracts.</li>
+                <li>Working in polyglot environments (Java, C#, Node, Python, etc.) without being tied to one stack.</li>
+                <li>Shipping production changes safely through testing, documentation, and collaboration.</li>
+              </ul>
+            </div>
+
+            {/* Mindset */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">How I think about engineering</p>
+              <p className="mt-2 opacity-80">
+                I don’t optimise for a specific language or framework — I optimise for solving the
+                problem well. I enjoy learning new technologies when they’re the right tool, and I’m
+                comfortable picking up unfamiliar stacks when needed.
+              </p>
+            </div>
+
+            {/* Career snapshot */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">Snapshot</p>
+              <div className="mt-3 space-y-3 opacity-90">
+                <div>
+                  <p className="font-medium">Currently</p>
+                  <p className="opacity-80">
+                    Working on a case handling services in the public sector, with an emphasis on security,
+                    correctness, and operational readiness.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium">Previously</p>
+                  <p className="opacity-80">
+                    Apprenticeship and product delivery experience in EdTech, building platform and
+                    user-facing backend features.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-full border border-white/10 px-3 py-1 text-sm">
+                Backend-first
               </span>
-            </p>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-sm">
+                Full-stack capable
+              </span>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-sm">
+                Polyglot
+              </span>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-sm">
+                Security-minded
+              </span>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-sm">
+                Security Clearance: SC
+              </span>
+            </div>
+
+            <div>
+              <Link
+                href="https://github.com/joselopezgr/joselopezweb/blob/main/README.md"
+                target="_blank"
+                className="inline-flex items-center gap-2 font-semibold hover:text-sky-700"
+              >
+                Read more <HiExternalLink />
+              </Link>
+            </div>
           </div>
 
-          <div className="text-center md:w-1/2 md:text-left p-8">
-            <h2 className="text-2xl font-bold mb-6">Tech and skills</h2>
-            <div className=" flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {technologies.map((item, idx) => {
-                const [key, value] = Object.entries(item)[0];
-                return (
-                  <Link key={idx} href={value.url} target="_blank">
-                    <p key={idx} className="tech-buttons">
-                      <span className="mr-1">{value.icon}</span>
-                      <span className="md:inline hidden">{key}</span>
-                    </p>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-2xl font-bold">Tech & tools</h3>
+              <p className="mt-2 opacity-80">
+                Technologies I’ve used in production or recent projects.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {technologies.map((t) => {
+                const pill = (
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm
+                               hover:border-white/20 transition"
+                  >
+                    <span className="text-base">{t.icon}</span>
+                    <span className="font-medium">{t.label}</span>
+                  </span>
+                );
+
+                return t.url ? (
+                  <Link key={t.label} href={t.url} target="_blank" className="no-underline">
+                    {pill}
                   </Link>
+                ) : (
+                  <span key={t.label}>{pill}</span>
                 );
               })}
+            </div>
+
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">Always learning</p>
+              <p className="mt-2 opacity-80">
+                I actively deepen fundamentals (OOP, concurrency, FP, system design) and enjoy
+                exploring new languages or frameworks when they expand my problem-solving toolkit.
+              </p>
             </div>
           </div>
         </div>

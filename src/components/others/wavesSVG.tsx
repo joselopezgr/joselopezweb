@@ -4,33 +4,20 @@ import React, { useEffect } from "react";
 const WavesSVG: React.FC = () => {
   const pathRef = React.useRef<SVGPathElement>(null);
 
-  useEffect(() => {
-    if (pathRef.current) {
-      anime({
-        targets: pathRef.current,
-        d: [
-          {
-            value:
-              "M 0 0 L 0 902.17 Q 237.75 609.25 475.5 584.98 T 951 413.48 T 1426.5 249.35 T 1902 62.27 L 1902 0 Z",
-          },
-          {
-            value:
-              "M 0 0 L 0 851.924 Q 237.75 607.503 475.5 561.752 T 951 470.72 T 1426.5 250.382 T 1902 -36.7969 L 1902 0 Z",
-          },
-          {
-            value:
-              "M 0 0 L 0 872.345 Q 237.75 677.095 475.5 647.655 T 951 430.36 T 1426.5 272.055 T 1902 101.7 L 1902 0 Z",
-          },
-          {
-            value:
-              "M 0 0 L 0 754.443 Q 237.75 663.446 475.5 634.592 T 951 445.368 T 1426.5 300.869 T 1902 18.1241 L 1902 0 Z",
-          },
-        ],
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: "easeInOutQuad",
-        duration: 2500,
-      });
-    }
+    useEffect(() => {
+    anime({
+      targets: ".wave-path",
+      d: [
+        { value: "M 0 0 L 0 902.17 Q ..." },
+        { value: "M 0 0 L 0 851.924 Q ..." },
+        { value: "M 0 0 L 0 872.345 Q ..." },
+        { value: "M 0 0 L 0 754.443 Q ..." },
+      ],
+      easing: "easeInOutQuad",
+      duration: 2500,
+      loop: true,
+      direction: "alternate",
+    });
   }, []);
 
   return (
@@ -60,10 +47,11 @@ const WavesSVG: React.FC = () => {
           }}
         >
           <linearGradient id="lg-ftpfaav2aur" x1="0" x2="1" y1="0" y2="0">
-            <stop stop-color="#d66853" offset="0"></stop>
-            <stop stop-color="#f9dcca" offset="1"></stop>
+            <stop stopColor="#d66853" offset="0"></stop>
+            <stop stopColor="#f9dcca" offset="1"></stop>
           </linearGradient>
           <path
+            className="wave-path"
             ref={pathRef}
             d="M 0 0 L 0 902.17 Q 237.75 609.25 475.5 584.98 T 951 413.48 T 1426.5 249.35 T 1902 62.27 L 1902 0 Z"
             fill="url(#lg-ftpfaav2aur)"
@@ -75,6 +63,7 @@ const WavesSVG: React.FC = () => {
             }}
           ></path>
           <path
+            className="wave-path"
             ref={pathRef}
             d="M 0 0 L 0 851.924 Q 237.75 607.503 475.5 561.752 T 951 470.72 T 1426.5 250.382 T 1902 -36.7969 L 1902 0 Z"
             fill="url(#lg-ftpfaav2aur)"
@@ -86,6 +75,7 @@ const WavesSVG: React.FC = () => {
             }}
           ></path>
           <path
+            className="wave-path"
             ref={pathRef}
             d="M 0 0 L 0 872.345 Q 237.75 677.095 475.5 647.655 T 951 430.36 T 1426.5 272.055 T 1902 101.7 L 1902 0 Z"
             fill="url(#lg-ftpfaav2aur)"
@@ -97,6 +87,7 @@ const WavesSVG: React.FC = () => {
             }}
           ></path>
           <path
+            className="wave-path"
             ref={pathRef}
             d="M 0 0 L 0 754.443 Q 237.75 663.446 475.5 634.592 T 951 445.368 T 1426.5 300.869 T 1902 18.1241 L 1902 0 Z"
             fill="url(#lg-ftpfaav2aur)"

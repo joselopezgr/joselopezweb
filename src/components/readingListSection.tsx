@@ -1,78 +1,110 @@
-import { ScrollShadow } from "@nextui-org/react";
-import { link } from "fs";
+"use client";
 
-const ReadingListSection = () => {
-  const readingList = [
-    {
-      title: "Grokkin Algorithms",
-      author: "Aditya Bhargava",
-      note: "Great book for beginners to learn algorithms",
-      link: "https://www.manning.com/books/grokking-algorithms",
-    },
-    {
-      title: "Clean Code",
-      author: "Robert C. Martin",
-      note: "A must-read for every developer",
-      link: "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882",
-    },
-    {
-      title: "Domain Driven Design Quickly",
-      author: "Abel Avram & Floyd Marinescu",
-      note: "A quick guide to DDD",
-      link: "https://www.infoq.com/minibooks/domain-driven-design-quickly/",
-    },
-    {
-      title: "Atomic Habits",
-      author: "James Clear",
-      note: "Great book to build good habits",
-      link: "https://jamesclear.com/atomic-habits",
-    },
-    {
-      title: "The Name of the Wind",
-      author: "Patrick Rothfuss",
-      note: "A great fantasy novel",
-      link: "https://www.amazon.com/Name-Wind-Kingkiller-Chronicle/dp/0756404746",
-    },
-  ];
+import Link from "next/link";
+import { HiExternalLink } from "react-icons/hi";
 
+const BeyondWorkSection = () => {
   return (
-    <section id="readingList" className="mx-auto max-w-6xl">
-      <div className="my-8 pb-16 md:my-9 md:pb-20 lg:my-14 lg:pb-24 xl:my-16 xl:pb-28">
-        <div className="list-container flex flex-col min-h-[600px] items-center space-y-10 mt-12 justify-start md:flex-flow md:text-left">
-          <div className="w-full md:w-2/3 px-4">
-            <p>
-              These are the books I have read or pending to read. I would like
-              to share my learning process with everyone so feel free to click
-              on them
+    <section id="beyond-work" className="mx-auto max-w-6xl px-4">
+      <div className="py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          {/* LEFT */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold">Beyond work</h2>
+            <p className="opacity-80 max-w-xl">
+              A few things I enjoy outside of day-to-day engineering that help
+              keep me curious, balanced, and improving.
             </p>
+
+            {/* Learning */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">Learning & curiosity</p>
+              <ul className="mt-3 list-disc ml-5 space-y-2 opacity-90">
+                <li>
+                  Reading about fundamentals like algorithms, clean code, and
+                  domain-driven design.
+                </li>
+                <li>
+                  Revisiting core concepts (OOP, FP, system design) rather than
+                  chasing frameworks.
+                </li>
+                <li>
+                  Occasionally stepping outside tech into topics like habits
+                  and personal growth.
+                </li>
+              </ul>
+            </div>
+
+            {/* Hobbies */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">Outside of coding</p>
+              <ul className="mt-3 list-disc ml-5 space-y-2 opacity-90">
+                <li>Reading fiction (sci-fi, fantasy).</li>
+                <li>Spending time exploring Leeds and staying active.</li>
+                <li>Enjoying slower, offline time to reset after deep work.</li>
+              </ul>
+            </div>
           </div>
-          <ScrollShadow className="flex flex-col w-[300px] h-[400px] md:w-[500px] items-center" hideScrollBar>
-            <ul className="flex-grow">
-              {readingList.map((book, index) => (
-                <li key={index} className="text-xl font-bold text-center p-4">
-                  <h2 className="text-2xl font-bold text-center border-b-2 border-gray-500">
-                    <a href={book.link} target="_blank">
-                      {book.title}
-                    </a>
-                  </h2>
-                  <p className="text-md pt-2">
-                    Author:
-                    <span style={{ color: "#d66853" }}>
-                      {" "}
-                      {book.author}
-                    </span>{" "}
-                  </p>
-                  <p className="text-sm">
-                    Note:<span className="italic"> {book.note}</span>
+
+          {/* RIGHT */}
+          <div className="space-y-6">
+            {/* Reading highlights */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">A few books that stuck with me</p>
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <Link
+                    href="https://www.manning.com/books/grokking-algorithms"
+                    target="_blank"
+                    className="font-medium hover:text-sky-700 inline-flex items-center gap-2"
+                  >
+                    Grokking Algorithms <HiExternalLink />
+                  </Link>
+                  <p className="text-sm opacity-70">
+                    Solid intuition for algorithmic thinking.
                   </p>
                 </li>
-              ))}
-            </ul>
-          </ScrollShadow>
+                <li>
+                  <Link
+                    href="https://www.infoq.com/minibooks/domain-driven-design-quickly/"
+                    target="_blank"
+                    className="font-medium hover:text-sky-700 inline-flex items-center gap-2"
+                  >
+                    Domain-Driven Design Quickly <HiExternalLink />
+                  </Link>
+                  <p className="text-sm opacity-70">
+                    A pragmatic intro to modelling complex domains.
+                  </p>
+                </li>
+                <li>
+                  <Link
+                    href="https://www.amazon.com/Name-Wind-Kingkiller-Chronicle/dp/0756404746"
+                    target="_blank"
+                    className="font-medium hover:text-sky-700 inline-flex items-center gap-2"
+                  >
+                    The Name of the Wind <HiExternalLink />
+                  </Link>
+                  <p className="text-sm opacity-70">
+                    Great storytelling and world-building.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            {/* Tie-back */}
+            <div className="rounded-2xl border border-white/10 p-5">
+              <p className="font-semibold">Why this matters</p>
+              <p className="mt-2 opacity-80">
+                I’ve found that staying curious outside of work helps me bring
+                more perspective, patience, and clarity into how I design and
+                build software.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default ReadingListSection;
+export default BeyondWorkSection;
